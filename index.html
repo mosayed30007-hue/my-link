@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+<head>
+    <style> 
+    /* تنسيقات الصفحة الأساسية */
+body {
+    background-color: #000; /* خلفية الصفحة سوداء */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* الحاوية الرئيسية */
+.main-container {
+    display: flex;
+    flex-direction: row; /* هذا السطر هو اللي بيخليهم جنب بعض بالعرض */
+    flex-wrap: wrap;     /* السطر ده مهم عشان لو الشاشة صغرت ينزلوا تحت بعض وما يختفوش */
+    justify-content: center; /* عشان يخلي البطاقات في نص الشاشة */
+    gap: 20px;           /* المسافة بين البطاقات */
+    padding: 20px;
+}
+
+/* تنسيق البطاقة الواحدة */
+.social-card {
+    background-color: #bcd0e4; 
+    width: 200px; /* صغرنا العرض من 300 لـ 220 */
+    border-radius: 25px; 
+    overflow: hidden; 
+    text-decoration: none; 
+    color: black;
+    display: flex;
+    flex-direction: column;
+    padding: 8px; /* قللنا المسافة الداخلية شوية */
+    transition: transform 0.2s ease;
+}
+
+/* تأثير عند تمرير الماوس */
+.social-card:hover {
+    transform: translateY(-5px); /* البطاقة تترفع لفوق شوية */
+}
+
+/* صورتك الشخصية الكبيرة */
+.main-photo {
+    width: 100%;
+    height: 250px; /* صغرنا الارتفاع من 350 لـ 250 */
+    overflow: hidden;
+    border-radius: 18px; 
+}
+
+.main-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* تخلي الصورة تملأ المكان من غير ماتتمط */
+}
+
+/* الجزء السفلي للبيانات */
+.info-footer {
+    display: flex;
+    justify-content: space-between; /* خلى الاسم في اليمين والأيقونة في الشمال */
+    align-items: center;
+    padding: 15px 10px;
+}
+
+/* اسم البيدج */
+.page-name {
+    font-size: 1rem; /* صغرنا الخط شوية */
+    margin: 0;
+    font-weight: bold;
+}
+
+/* أيقونة السوشيال */
+.social-icon {
+    font-size: 1.8rem; /* صغرنا الأيقونة شوية */
+}
+/* 1. عدل الـ body عشان يرتّب المحتوى من فوق لتحت */
+body {
+    background-color: #dee2a4; /* لون الخلفية اللي في صورتك */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* يخلي الهيدر فوق والكونتينر تحته */
+    align-items: center;    /* يوسطن كل حاجة في نص الشاشة */
+    padding: 40px 10px;
+    min-height: 100vh;
+}
+
+/* تنسيق الجزء العلوي */
+.header-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* سنتره العناصر في النص */
+    margin-bottom: 30px; /* مسافة بين البروفايل وبين البطاقات اللي تحت */
+    width: 100%;
+}
+
+.profile-pic-circle img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #bcd0e4; /* برواز خفيف بنفس لون البطاقات */
+}
+
+.username-top {
+    color: #3b3b98; /* نفس اللون الأزرق اللي أنت مستخدمه */
+    font-size: 1.5rem;
+    margin-top: 10px;
+    direction: ltr; /* عشان الـ @ تظهر صح */
+}
+
+/* تأكد إن الـ main-container واخد السطر ده عشان يفضلوا في النص */
+/* 3. الـ container يفضل بيرتب البطاقات بالعرض عادي */
+.main-container {
+    display: flex;
+    flex-direction: row; /* البطاقات جنب بعض */
+    flex-wrap: wrap;     /* ينزلوا سطر جديد لو الشاشة ضاقت */
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;   /* عشان البطاقات متبعدش عن بعض قوي في الشاشات الواسعة */
+}
+/* تنسيق الجزء العلوي بالكامل */
+/* 2. تأكد من تنسيق الهيدر */
+.header-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px; /* مسافة بين الاسم وأول صف بطاقات */
+    text-align: center;
+}
+
+/* تنسيق الصورة المدورة */
+.top-profile-pic img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #bcd0e4;
+}
+/* التأثير لما الماوس ييجي على الصورة */
+.top-profile-pic img:hover {
+    transform: translateY(-10px); /* يرفع الصورة لفوق بمقدار 10 بيكسل */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* بيضيف ضل خفيف تحتها وهي مرفوعة */
+}
+
+/* تنسيق الاسم */
+.top-username {
+    color: #000089; /* اللون الأزرق اللي في صورتك */
+    font-size: 1.4rem;
+    margin-top: 15px;
+    direction: ltr; /* عشان الـ @ تظهر في مكانها الصح */
+}
+/* التأثير لما الماوس ييجي على الاسم */
+.top-username:hover {
+    color: #00009d; /* يغير اللون للأسود مثلاً أو أي لون تحبه */
+    transform: scale(1.1); /* بيكبر الاسم بنسبة 10% */
+    letter-spacing: 1px; /* بيعمل مسافة بسيطة بين الحروف بيدي شكل شيك */
+}
+/* تنسيق قسم الوصف */
+.footer-description {
+    margin-top: 50px; /* مسافة بينه وبين البطاقات */
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 600px; /* عشان الكلام ميبقاش عريض أوي */
+}
+
+.footer-description p {
+    color: #000000; /* نفس اللون الأزرق اللي استخدمناه */
+    font-size: 1.1rem;
+    line-height: 1.6; /* مسافة بين السطور تريح العين */
+    font-weight: 500;
+}
+
+/* خط بسيط يفصل بين الوصف والحقوق */
+.footer-line {
+    width: 50px;
+    height: 2px;
+    background-color: #000000;
+    margin: 15px auto;
+}
+
+.copyright {
+    font-size: 0.8rem !important;
+    opacity: 0.7;
+}
+
+ </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title> MoSayed </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+
+
+<body>
+    
+ <div class="header-section">
+    <div class="top-profile-pic">
+        <img src="imge/me1.jpg" alt="Profile">
+    </div>
+    <h1 class="top-username">MOSAYED</h1>
+ </div>
+
+   <div class="main-container">
+
+    <a href="https://www.instagram.com/mz__304?igsh=a3F3bTFvN21wNXVx&utm_source=qr" target="_blank" class="social-card instagram">
+        <div class="main-photo">
+            <img src="imge/m2.jpeg" alt="">
+        </div>
+
+        <div class="info-footer">
+            <h2 class="page-name">محمد سيد</h2>
+
+            <i class="social-icon fab fa-instagram"></i>
+        </div>
+    </a>
+
+     <a href="https://www.facebook.com/30.MO.7?mibextid=wwXIfr&mibextid=wwXIfr" target="_blank" class="social-card facebook">
+        <div class="main-photo">
+            <img src="imge/me1.jpg" alt="">
+        </div>
+
+        <div class="info-footer">
+            <h2 class="page-name">محمد سيد</h2>
+
+            <i class="social-icon fab fa-facebook"></i>
+        </div>
+    </a>
+    <a href="https://api.whatsapp.com/send/?phone=%2B201093349464&text&type=phone_number&app_absent=0&wame_ctl=1" target="_blank" class="social-card whatsapp">
+        <div class="main-photo">
+            <img src="imge/m3.jpeg" alt="">
+        </div>
+
+        <div class="info-footer">
+            <h2 class="page-name">Mohamed Sayed</h2>
+
+            <i class="social-icon fab fa-whatsapp"></i>
+        </div>
+    </a>
+    <a href="https://twet.link/mohamedsayed24" target="_blank" class="social-card">
+        <div class="main-photo">
+            <img src="imge/m4.jpeg" alt="">
+        </div>
+
+        <div class="info-footer">
+            <h2 class="page-name">mosayed</h2>
+
+            <i class="fas fa-envelope-open-text"></i>
+        </div>
+    </a>
+    <a href="https://web.telegram.org/k/" target="_blank" class="social-card telegram">
+        <div class="main-photo">
+            <img src="imge/m5.jpeg" alt="">
+        </div>
+
+        <div class="info-footer">
+            <h2 class="page-name">Mohamed sayed</h2>
+
+            <i class="social-icon fab fa-telegram"></i>
+        </div>
+    </a>
+
+    </div>
+
+    <footer class="footer-description">
+    <span>Just a wonderful person</span>
+    <h4>A student in a university FNU | College of Computers and Artifical Intelligence.</h4>
+    <div class="footer-line"></div>
+    <p class="copyright">© 2007 Mohammed Sayed</p>
+ </footer>
+</body>
+</html>
+
