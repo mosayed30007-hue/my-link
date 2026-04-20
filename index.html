@@ -4,15 +4,7 @@
 <head>
     <style> 
     /* تنسيقات الصفحة الأساسية */
-body {
-    background-color: #000; /* خلفية الصفحة سوداء */
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-}
+
 
 /* الحاوية الرئيسية */
 .main-container {
@@ -26,7 +18,7 @@ body {
 
 /* تنسيق البطاقة الواحدة */
 .social-card {
-    background-color: #bcd0e4; 
+    background-color: #F1B76D; 
     width: 200px; /* صغرنا العرض من 300 لـ 220 */
     border-radius: 25px; 
     overflow: hidden; 
@@ -78,9 +70,10 @@ body {
 }
 /* 1. عدل الـ body عشان يرتّب المحتوى من فوق لتحت */
 body {
-    background-color: #dee2a4; /* لون الخلفية اللي في صورتك */
+    background-color:#373B56; /* لون الخلفية اللي في صورتك */
     margin: 0;
     display: flex;
+    font-family: Arial, sans-serif;
     flex-direction: column; /* يخلي الهيدر فوق والكونتينر تحته */
     align-items: center;    /* يوسطن كل حاجة في نص الشاشة */
     padding: 40px 10px;
@@ -101,11 +94,11 @@ body {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #bcd0e4; /* برواز خفيف بنفس لون البطاقات */
+    border: 3px solid #F1B76D; /* برواز خفيف بنفس لون البطاقات */
 }
 
 .username-top {
-    color: #3b3b98; /* نفس اللون الأزرق اللي أنت مستخدمه */
+    color: #F1B76D; /* نفس اللون الأزرق اللي أنت مستخدمه */
     font-size: 1.5rem;
     margin-top: 10px;
     direction: ltr; /* عشان الـ @ تظهر صح */
@@ -138,7 +131,7 @@ body {
     height: 110px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #bcd0e4;
+    border: 3px solid #F1B76D;
 }
 /* التأثير لما الماوس ييجي على الصورة */
 .top-profile-pic img:hover {
@@ -148,14 +141,14 @@ body {
 
 /* تنسيق الاسم */
 .top-username {
-    color: #000089; /* اللون الأزرق اللي في صورتك */
+    color: #F1B76D; /* اللون الأزرق اللي في صورتك */
     font-size: 1.4rem;
     margin-top: 15px;
     direction: ltr; /* عشان الـ @ تظهر في مكانها الصح */
 }
 /* التأثير لما الماوس ييجي على الاسم */
 .top-username:hover {
-    color: #00009d; /* يغير اللون للأسود مثلاً أو أي لون تحبه */
+    color: #fdcd8e; /* يغير اللون للأسود مثلاً أو أي لون تحبه */
     transform: scale(1.1); /* بيكبر الاسم بنسبة 10% */
     letter-spacing: 1px; /* بيعمل مسافة بسيطة بين الحروف بيدي شكل شيك */
 }
@@ -186,6 +179,44 @@ body {
 .copyright {
     font-size: 0.8rem !important;
     opacity: 0.7;
+
+    .countdown-container {
+    background: rgba(188, 208, 228, 0.2); /* نفس لون البطاقات بس شفاف شوية */
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px auto;
+    text-align: center;
+    border: 1px solid #bcd0e4;
+    color: #3b3b98;
+}
+
+#timer {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #3b3b98;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+#timer span {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+#timer small {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    display: block;
+    margin-top: 5px;
+}
+
+.countdown-container h3 {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
 }
 
  </style>
@@ -255,7 +286,7 @@ body {
             <i class="fas fa-envelope-open-text"></i>
         </div>
     </a>
-    <a href="https://web.telegram.org/k/" target="_blank" class="social-card telegram">
+    <a href="https://t.me/mo_sayed_6" target="_blank" class="social-card telegram">
         <div class="main-photo">
             <img src="imge/m5.jpeg" alt="">
         </div>
@@ -273,8 +304,61 @@ body {
     <span>Just a wonderful person</span>
     <h4>A student in a university FNU | College of Computers and Artifical Intelligence.</h4>
     <div class="footer-line"></div>
+    
     <p class="copyright">© 2007 Mohammed Sayed</p>
  </footer>
+<div class="countdown-container">
+    <h3>WHAT REMAINS IS TO REACH THE DREAM</h3>
+    <div id="timer">Calculating...</div>
+</div>
+
+<script>
+    // التاريخ الثابت: 30 يونيو 2028
+    // ملاحظة: شهر 6 بنكتبه 5 في البرمجة
+    const targetDate = new Date(2028, 5, 30, 0, 0, 0);
+
+    function updateTimer() {
+        const now = new Date();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+            document.getElementById("timer").innerHTML = "THE DREAM IS NOW!";
+            return;
+        }
+
+        // حساب السنين والشهور والأيام بدقة
+        let years = targetDate.getFullYear() - now.getFullYear();
+        let months = targetDate.getMonth() - now.getMonth();
+        let days = targetDate.getDate() - now.getDate();
+
+        // معالجة الأيام لو طلعت بالسالب
+        if (days < 0) {
+            months--;
+            const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+            days += lastDayOfMonth;
+        }
+
+        // معالجة الشهور لو طلعت بالسالب
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        // حساب الساعات والدقائق والثواني
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        // العرض النهائي (الرقم جنب الكلمة)
+        document.getElementById("timer").innerHTML = 
+            `<span>${years} Years</span> | <span>${months} Months</span> | <span>${days} Days</span> <br>` + 
+            `<small>${hours}H : ${minutes}M : ${seconds}S</small>`;
+    }
+
+    // تحديث كل ثانية
+    setInterval(updateTimer, 1000);
+    updateTimer();
+</script>
 </body>
 </html>
 
